@@ -1,0 +1,2 @@
+module Admin::RatingHelper
+end

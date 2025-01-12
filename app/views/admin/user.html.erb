@@ -1,0 +1,34 @@
+<h1>Admin Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_user_path(user) %>
+          <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Add New User</h2>
+<%= form_with model: @user, local: true do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <%= form.email_field :email, placeholder: "Email" %>
+  <%= form.password_field :password, placeholder: "Password" %>
+  <%= form.select :role, User.roles.keys %>
+  <%= form.submit "Save" %>
+<% end %>

@@ -1,0 +1,39 @@
+<h1>Ratings</h1>
+
+<%= form_with(url: admin_ratings_path, method: :get, local: true) do |form| %>
+  <div>
+    <%= form.label :rating, "Filter by Rating" %>
+    <%= form.select :rating, options_for_select([1,2,3,4,5]), include_blank: true %>
+  </div>
+  <div>
+    <%= form.label :store_name, "Filter by Store" %>
+    <%= form.text_field :store_name, placeholder: "Store Name" %>
+  </div>
+  <%= form.submit "Filter" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store Name</th>
+      <th>User Name</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ratings.each do |rating| %>
+      <tr>
+        <td><%= rating.store.name %></td>
+        <td><%= rating.user.name %></td>
+        <td><%= rating.rating %></td>
+        <td><%= rating.comments %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_rating_path(rating) %>
+          <%= link_to 'Destroy', admin_rating_path(rating), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
