@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 gem "bcrypt", "~> 3.1.7"
-gem "bootstrap", "~> 5.2.3"
+gem "bootstrap", "~> 5.3.3"
 gem "sassc-rails"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
