@@ -1,0 +1,1 @@
+# strore_rating_system
